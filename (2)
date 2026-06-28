@@ -1,0 +1,83 @@
+/*
+Program Name: Chips N Salsa
+Purpose: Track salsa sales.
+Author: Shaun Entrekin
+Date Last Modified: 6/27/2026
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    const int SIZE = 5;
+
+    string salsa[SIZE] =
+    {
+        "Mild",
+        "Medium",
+        "Sweet",
+        "Hot",
+        "Zesty"
+    };
+
+    int jarsSold[SIZE];
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "Enter jars sold "
+             << salsa[i] << ": ";
+
+        cin >> jarsSold[i];
+
+        while (jarsSold[i] < 0)
+        {
+            cout << "Negative values not allowed.\n";
+            cout << "Enter again: ";
+            cin >> jarsSold[i];
+        }
+    }
+
+    int totalSales = 0;
+
+    int highest = jarsSold[0];
+    int lowest = jarsSold[0];
+
+    string highestName = salsa[0];
+    string lowestName = salsa[0];
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        totalSales += jarsSold[i];
+
+        if (jarsSold[i] > highest)
+        {
+            highest = jarsSold[i];
+            highestName = salsa[i];
+        }
+
+        if (jarsSold[i] < lowest)
+        {
+            lowest = jarsSold[i];
+            lowestName = salsa[i];
+        }
+    }
+
+    cout << "\nMonthly Sales Report\n";
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << salsa[i]
+             << ": "
+             << jarsSold[i]
+             << endl;
+    }
+
+    cout << "\nTotal Sales: " << totalSales << endl;
+    cout << "Highest Selling Salsa: " << highestName << endl;
+    cout << "Lowest Selling Salsa: " << lowestName << endl;
+
+    return 0;
+}
